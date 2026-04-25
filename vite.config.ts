@@ -2,10 +2,16 @@ import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { VitePWA } from 'vite-plugin-pwa'
 
+/** Default base for GitHub Pages project sites: https://user.github.io/repository/ */
+const GITHUB_PAGES_BASE = '/portfolio/'
+
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
-  const base = env.VITE_BASE_PATH || '/'
+  // Dev server uses /. Production: GitHub Pages via GITHUB_PAGES_BASE, unless overridden.
+  // On Vercel (root), set: VITE_BASE_PATH=/
+  const base = (env.VITE_BASE_PATH as string | undefined) || (mode === 'development' ? '/' : GITHUB_PAGES_BASE)
+  const pwaPath = (base.endsWith('/') ? base : `${base}/`) as string
 
   return {
     base,
@@ -23,8 +29,8 @@ export default defineConfig(({ mode }) => {
           background_color: '#0f172a',
           display: 'standalone',
           orientation: 'portrait-primary',
-          start_url: './',
-          scope: './',
+          start_url: pwaPath,
+          scope: pwaPath,
           icons: [
             {
               src: 'icons/pwa-192x192.png',
