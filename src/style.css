@@ -1,0 +1,96 @@
+:root {
+  --bg: #0b1220;
+  --bg-elevated: #111827;
+  --surface: #1e293b;
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --accent: #38bdf8;
+  --accent-dim: rgba(56, 189, 248, 0.15);
+  --border: rgba(148, 163, 184, 0.2);
+  --radius: 12px;
+  --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  --sans: 'Segoe UI', system-ui, Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --max: 1100px;
+
+  font-family: var(--sans);
+  font-size: clamp(15px, 2.5vw, 17px);
+  line-height: 1.55;
+  color: var(--text);
+  background: var(--bg);
+  color-scheme: dark;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  overflow-x: clip;
+}
+
+a {
+  color: var(--accent);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+#app {
+  min-height: 100svh;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+h1 {
+  font-size: clamp(1.85rem, 5vw, 2.75rem);
+  margin: 0 0 0.35rem;
+}
+
+h2 {
+  font-size: clamp(1.35rem, 3vw, 1.65rem);
+  margin: 0 0 1rem;
+}
+
+h3 {
+  font-size: 1.05rem;
+  margin: 0 0 0.5rem;
+}
+
+p {
+  margin: 0 0 0.85rem;
+  color: var(--text-muted);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+.container {
+  width: min(100% - 1.5rem, var(--max));
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: clamp(2.5rem, 6vw, 4rem);
+}
+
+.section--alt {
+  background: var(--bg-elevated);
+  border-block: 1px solid var(--border);
+}
